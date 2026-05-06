@@ -184,8 +184,6 @@ export function Sidebar() {
       <SidebarLink to="/companies" icon={Icons.companies} label="Suppliers" />
       <SidebarLink to="/alternate-suppliers" icon={Icons.alternates} label="Sales Report" />
 
-      <SidebarSection label="Tools" />
-      <SidebarLink to="/advisor" icon={Icons.advisor} label="Extensions" />
 
       {/* Spacer */}
       <div style={{ flex: 1 }} />

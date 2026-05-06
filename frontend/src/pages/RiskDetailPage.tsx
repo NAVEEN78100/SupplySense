@@ -4,7 +4,6 @@ import { useQuery } from '@tanstack/react-query'
 import { api } from '../services/api'
 import { queryKeys } from '../hooks/queryKeys'
 import { useWeightedRiskAnalysis, useProcurementCards } from '../hooks/useQueries'
-import { WhatIfChat } from '../components/panels/WhatIfChat'
 import { Badge } from '../components/ui/Badge'
 import type { SupplierRiskAnalysis, IntelligentActionCard, MitigationSimulation } from '../types'
 
@@ -737,16 +736,6 @@ export default function RiskDetailPage() {
         </div>
         <MitigationSection supplierId={id} />
       </div>
-
-      {/* ── What-If Chat ── */}
-      <div style={{ background: 'var(--bg-card)', border: '1px solid #E2E8F0', borderRadius: '0.875rem', padding: '1.25rem', boxShadow: '0 1px 4px rgba(0,0,0,0.05)' }}>
-        <h3 style={{ fontSize: '0.9375rem', fontWeight: 700, color: 'var(--ink-1)', marginBottom: '0.5rem' }}>What-If Advisor</h3>
-        <p style={{ fontSize: '0.8125rem', color: 'var(--ink-3)', marginBottom: '1rem' }}>
-          Ask scenario questions about <strong>{risk?.supplier_name ?? 'this supplier'}</strong>.
-        </p>
-        <WhatIfChat prefillContext={risk?.supplier_name} />
-      </div>
-
     </div>
   )
 }

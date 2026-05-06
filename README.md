@@ -20,7 +20,7 @@ Tier-1 and Tier-2 suppliers in Indian retail constantly face unforeseen disrupti
 ┌─────────────────────────────────────────────────────────────────────┐
 │                        React 18 + TypeScript Frontend               │
 │                                                                     │
-│  Dashboard  ·  Risk Monitor  ·  SKU Forecast  ·  AI Advisor        │
+│  Dashboard  ·  Risk Monitor  ·  SKU Forecast                       │
 │  Risk Detail  ·  Suppliers  ·  Alternates  ·  Settings             │
 │                                                                     │
 │  useWeightedRiskAnalysis()  <--  localStorage weights               │
@@ -44,7 +44,6 @@ Tier-1 and Tier-2 suppliers in Indian retail constantly face unforeseen disrupti
 │  │  Supervisor --> Signal Intelligence                          │  │
 │  │             --> Risk Assessment                              │  │
 │  │             --> Prescriptive Action                          │  │
-│  │             --> Conversational Advisor  <-- WhatIfChat       │  │
 │  │                                                              │  │
 │  │  BedrockModel (Claude 3 Haiku · us-east-1)                  │  │
 │  │  AWS Guardrails (ID: big59xwx9384)                          │  │
@@ -109,11 +108,10 @@ adjusted_demand  = base_demand x festival_multiplier x disruption_factor
 User query
     │
     ▼
-ConversationalAdvisorAgent
+PrescriptiveActionAgent
     ├── Tool: query_supplier_risk    (live DB lookup)
     ├── Tool: query_sku_stockout     (stockout engine)
-    ├── Tool: simulate_scenario      (what-if analysis)
-    └── Tool: get_financial_summary  (financial engine)
+    ├── Tool: get_financial_summary  (financial engine)
          │
          ▼
     BedrockModel (Claude 3 Haiku · us-east-1)
@@ -127,7 +125,6 @@ Four specialist agents:
 - **Signal Intelligence** — classifies disruption events, identifies affected suppliers
 - **Risk Assessment** — cascade impact scoring, financial exposure
 - **Prescriptive Action** — generates alternate sourcing recommendations, TFE calculations
-- **Conversational Advisor** — handles natural language queries from the What-If Chat panel
 
 ### Scenario Simulation
 One-click trigger of four pre-configured crisis scenarios:
@@ -184,9 +181,9 @@ supplysense/
 │   └── requirements-ai.txt  # strands-agents (optional)
 ├── frontend/
 │   └── src/
-│       ├── components/      # Reusable UI (Badge, MetricCard, IndiaMap, WhatIfChat)
+│       ├── components/      # Reusable UI (Badge, MetricCard, IndiaMap)
 │       ├── hooks/           # useWeightedRiskAnalysis, useRiskWeights, useQueries
-│       ├── pages/           # Dashboard, Risks, RiskDetail, Settings, AIAdvisor, ...
+│       ├── pages/           # Dashboard, Risks, RiskDetail, Settings, ...
 │       └── router.tsx
 ├── infrastructure/          # SQL init scripts
 ├── shared/                  # API contracts
@@ -208,7 +205,6 @@ supplysense/
 | GET | `/api/v1/disruptions` | Active disruption timeline |
 | GET | `/api/v1/risk/analysis` | Weighted risk analysis (all suppliers) |
 | GET | `/api/v1/action-cards` | AI-generated procurement recommendations |
-| POST | `/api/v1/chat` | Conversational AI query (Strands pipeline) |
 | POST | `/api/v1/scenarios/{name}/trigger` | Trigger crisis scenario |
 | GET | `/api/v1/events` | SSE stream (real-time disruption feed) |
 

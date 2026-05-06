@@ -12,7 +12,6 @@ const RiskMitigationPlan     = React.lazy(() => import('./pages/RiskMitigationPl
 const CompaniesPage          = React.lazy(() => import('./pages/CompaniesPage'))
 const CompanyDetailPage      = React.lazy(() => import('./pages/CompanyDetailPage'))
 const AlternateSuppliersPage = React.lazy(() => import('./pages/AlternateSuppliersPage'))
-const AIAdvisor              = React.lazy(() => import('./pages/AIAdvisor'))
 const SettingsPage           = React.lazy(() => import('./pages/SettingsPage'))
 
 function LazyRoute({ children }: { children: React.ReactNode }) {
@@ -57,10 +56,6 @@ export const router = createBrowserRouter([
       {
         path: 'alternate-suppliers',
         element: <LazyRoute><AlternateSuppliersPage /></LazyRoute>,
-      },
-      {
-        path: 'advisor',
-        element: <LazyRoute><AIAdvisor /></LazyRoute>,
       },
       {
         path: 'settings',
