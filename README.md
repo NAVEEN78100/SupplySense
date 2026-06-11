@@ -290,3 +290,18 @@ npm run dev
 **asyncio.Queue fan-out** — Each SSE client gets its own queue. Slow clients don't block fast ones. Future scaling path: swap for Redis Pub/Sub with zero application-layer changes.
 
 **Strands errors surface directly** — Removed all fallback approval loops. When Strands fails, the error message is returned immediately instead of blocking the UI for 60 seconds waiting for user approval.
+
+---
+
+## Contributors
+
+| Name | Role | GitHub |
+|---|---|---|
+| Naveen | UI / Frontend Development | [@naveen](https://github.com/naveen) |
+
+### UI Contributions (Naveen)
+- Redesigned Sidebar with gradient logo mark and contributor identity card
+- Enhanced TopBar user avatar with gradient initials and hover tooltips
+- Improved CSS design tokens — refined shadow scale and color palette
+- Added live date display in dashboard welcome header
+- Improved visual hierarchy across layout components
